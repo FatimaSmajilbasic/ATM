@@ -40,12 +40,12 @@ public class Transactions extends Account {
 	}
 
 	public static boolean check() {
-		boolean sourceexist = false;
-		boolean targetexist = false;
+		boolean sourceExist = false;
+		boolean targetExist = false;
 		boolean enough = false;
 		for (int i = 0; i < accounts.size(); i++) {
 			if (accounts.get(i).getAccountNumber() == sourceAccount) {
-				sourceexist = true;
+				sourceExist = true;
 				return true;
 
 			} else {
@@ -56,7 +56,7 @@ public class Transactions extends Account {
 		for (int i = 0; i < accounts.size(); i++) {
 
 			if (accounts.get(i).getAccountNumber() == targetAccount) {
-				targetexist = true;
+				targetExist = true;
 				return true;
 			} else {
 				System.out.println("The target account does not exist.");
@@ -74,7 +74,7 @@ public class Transactions extends Account {
 
 		}
 
-		if (sourceexist && targetexist && enough) {
+		if (sourceExist && targetExist && enough) {
 			return true;
 		}
 

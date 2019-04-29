@@ -24,8 +24,8 @@ public class Atm_test {
 			System.out.println("Please insert your name :");
 			String name = input.nextLine();
 			while (!Account.validName(name)) {
-				System.out.println("Name should contain only letters.");
-				System.out.println("Please insert your name :");
+				System.out.print("Name should contain only letters! Try again :");
+				
 				name = input.nextLine();
 
 			}
@@ -84,9 +84,7 @@ public class Atm_test {
 		
 		case 0:
 			System.out.println("Have a nice day!"); break;
-		default:
-			System.out.println("Please choose one of offered options.");
-			break;
+	
 		}
 		}
 		input.close();
