@@ -23,7 +23,7 @@ public class Atm_test {
 			input.nextLine();
 			System.out.println("Please insert your name :");
 			String name = input.nextLine();
-			while (!Account.validName(name)) {
+			while (!AccountManager.validName(name)) {
 				System.out.print("Name should contain only letters! Try again :");
 				
 				name = input.nextLine();
@@ -31,7 +31,7 @@ public class Atm_test {
 			}
 			System.out.println("Please insert number of account :");
 			int number = input.nextInt();
-			while (Account.isAccountNumberValid(number)) {
+			while (AccountManager.isAccountNumberValid(number)) {
 				System.out.println("Please choose another account number: ");
 				number = input.nextInt();
 			}
@@ -39,7 +39,7 @@ public class Atm_test {
 			System.out.println("Please insert account balance :");
 
 			double balance = input.nextDouble();
-			while (Account.isBalanceValid(balance)) {
+			while (AccountManager.isBalanceValid(balance)) {
 				System.out.print("Please insert your balance again : ");
 				balance = input.nextDouble();
 			}
@@ -77,7 +77,7 @@ public class Atm_test {
 			for (int i = 0; i < accounts.size(); i++) {
 				if (accounts.get(i).getAccountNumber() == number) {
 					System.out.println();
-					Account.checkBalance(number);
+					Account.checkAccounts(number);
 				}
 			}
 			break;

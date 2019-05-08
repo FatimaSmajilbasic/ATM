@@ -41,15 +41,6 @@ public class Account  {
 		return accounts;
 	}
 	
-	public static void checkBalance(int accountNumber) {
-		for (int i = 0; i < accounts.size(); i++)
-			if (accounts.get(i).accountNumber == accountNumber) {
-				System.out.println(accounts.get(i).toString());
-				return;
-			}
-		System.out.println("Account is incorrect.");
-	}
-	
 	
 	public static int numberOfAccountsCreated(){
 		return accounts.size();
@@ -57,26 +48,7 @@ public class Account  {
 	
 
 
-	public static boolean isBalanceValid(double balance) {
-		for (int i = 0; i < accounts.size(); i++) {
-			if (accounts.get(i).getBalance() < 0) {
-				return true;
-			}
-		}
-		return false;
-
-	}
-	public static boolean isAccountNumberValid(int accountNumber) {
-		for (int i = 0; i < accounts.size(); i++) {
-			while (accounts.get(i).getAccountNumber() == accountNumber) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-
-	public static void printoutsOfAccounts(int accountNumber) {
+	public static void checkAccounts(int accountNumber) {
 		for (int i = 0; i < accounts.size(); i++)
 			if (accounts.get(i).accountNumber == accountNumber) {
 				System.out.println(accounts.get(i).toString());
@@ -86,17 +58,7 @@ public class Account  {
 
 	}
 
-	public static boolean validName(String name) {
-		for (int i = 0; i < name.length(); i++) {
-			if (!Character.isLetter(name.charAt(i))) {
-				return false;
-			}
-		}
 
-		return true;
-
-	}
-	
 	  
 		public  String toString() {
 		return "Account [Account No = " + accountNumber + ", client = "
