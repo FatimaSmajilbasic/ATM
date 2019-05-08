@@ -1,5 +1,5 @@
 package atm;
-
+import java.util.InputMismatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +11,7 @@ public class Atm_test {
     
 		Scanner input = new Scanner(System.in);
 		int choice = -1;
+		int accNumber = 0;
 		while(choice != 0 ) {
 		System.out.print("Please choose an option: \n" + "\n 1. Create account\n"
 				+ "\n 2. Transfer money to another account\n" + "\n 3. Print account details \n " + "\n 4. Exit \n");
@@ -19,7 +20,7 @@ public class Atm_test {
 		switch (choice) {
 
 		case 1:
-
+            Account account = new Account();
 			input.nextLine();
 			System.out.println("Please insert your name :");
 			String name = input.nextLine();
@@ -27,14 +28,33 @@ public class Atm_test {
 				System.out.print("Name should contain only letters! Try again :");
 				
 				name = input.nextLine();
-
 			}
+			account.setClient(name);
+			
 			System.out.println("Please insert number of account :");
-			int number = input.nextInt();
-			while (AccountManager.isAccountNumberValid(number)) {
-				System.out.println("Please choose another account number: ");
-				number = input.nextInt();
-			}
+			boolean continueInput;
+			do {
+				try {
+
+					 accNumber = input.nextInt();
+
+					input.nextLine();
+				   continueInput = false;
+				
+					while (!AccountManager.isAccountNumberValid(accNumber)) {
+						
+						System.out.println("Please choose another account number: ");
+						accNumber = input.nextInt();
+					}
+					account.setAccountNumber(accNumber);
+				} 
+				catch (InputMismatchException ex) {
+					System.out.println("Incorrect input: an integer is required! Try again)");
+					input.nextLine();
+					continueInput = true;
+				}
+			} while (continueInput);
+		
 
 			System.out.println("Please insert account balance :");
 
@@ -43,8 +63,10 @@ public class Atm_test {
 				System.out.print("Please insert your balance again : ");
 				balance = input.nextDouble();
 			}
+			account.setBalance(balance);
+			
 			System.out.println("You have successfully created an account. Insert 3 to check account details.");
-			Account acc = new Account(number, name, balance);
+			Account acc = new Account(accNumber, name, balance);
 			accounts.add(acc);	
 			break;
 
@@ -73,11 +95,11 @@ public class Atm_test {
 
 		case 3:
 			System.out.println("Please insert your number of account :");
-			number = input.nextInt();
+			accNumber = input.nextInt();
 			for (int i = 0; i < accounts.size(); i++) {
-				if (accounts.get(i).getAccountNumber() == number) {
+				if (accounts.get(i).getAccountNumber() == accNumber) {
 					System.out.println();
-					Account.checkAccounts(number);
+					Account.checkAccounts(accNumber);
 				}
 			}
 			break;
