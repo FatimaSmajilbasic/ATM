@@ -3,11 +3,11 @@ import java.util.InputMismatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Atm_test {
+public class Atm_test  {
 
 	public static ArrayList<Account> accounts = new ArrayList<Account>();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InputMismatchException {
     
 		Scanner input = new Scanner(System.in);
 		int choice = -1;
@@ -60,7 +60,7 @@ public class Atm_test {
 			System.out.println("Please insert account balance :");
 
 			double balance = input.nextDouble();
-			while (balance < 0 ) {
+			while (!AccountManager.isBalanceValid(balance)) {
 				System.out.print("Please insert your balance again : ");
 				balance = input.nextDouble();
 			}

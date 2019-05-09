@@ -12,11 +12,9 @@ public class AccountManager extends Account {
 		return true;
 	}
 	public static boolean isBalanceValid(double balance) {
-		for (int i = 0; i < accounts.size(); i++) {
-			if (accounts.get(i).getBalance() < 0) {
+		if (balance < 0)
 				return false;
-			}
-		}
+		
 		return true;
 
 	}
