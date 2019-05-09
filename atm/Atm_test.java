@@ -12,6 +12,7 @@ public class Atm_test {
 		Scanner input = new Scanner(System.in);
 		int choice = -1;
 		int accNumber = 0;
+	
 		while(choice != 0 ) {
 		System.out.print("Please choose an option: \n" + "\n 1. Create account\n"
 				+ "\n 2. Transfer money to another account\n" + "\n 3. Print account details \n " + "\n 4. Exit \n");
@@ -41,7 +42,7 @@ public class Atm_test {
 					input.nextLine();
 				   continueInput = false;
 				
-					while (!AccountManager.isAccountNumberValid(accNumber)) {
+					while (!AccountManager.isAccountNumberValid(accNumber) || accNumber < 0) {
 						
 						System.out.println("Please choose another account number: ");
 						accNumber = input.nextInt();
@@ -49,7 +50,7 @@ public class Atm_test {
 					account.setAccountNumber(accNumber);
 				} 
 				catch (InputMismatchException ex) {
-					System.out.println("Incorrect input: an integer is required! Try again)");
+					System.out.println("Incorrect input: an integer is required. Try again! ");
 					input.nextLine();
 					continueInput = true;
 				}
@@ -59,7 +60,7 @@ public class Atm_test {
 			System.out.println("Please insert account balance :");
 
 			double balance = input.nextDouble();
-			while (AccountManager.isBalanceValid(balance)) {
+			while (balance < 0 ) {
 				System.out.print("Please insert your balance again : ");
 				balance = input.nextDouble();
 			}
@@ -68,6 +69,9 @@ public class Atm_test {
 			System.out.println("You have successfully created an account. Insert 3 to check account details.");
 			Account acc = new Account(accNumber, name, balance);
 			accounts.add(acc);	
+			
+	
+
 			break;
 
 		case 2:
