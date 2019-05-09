@@ -41,11 +41,6 @@ public class Account  {
 		return accounts;
 	}
 	
-	
-	public static int numberOfAccountsCreated(){
-		return accounts.size();
-	}
-	
 
 
 	public static void checkAccounts(int accountNumber) {

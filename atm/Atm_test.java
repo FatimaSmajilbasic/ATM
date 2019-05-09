@@ -12,12 +12,28 @@ public class Atm_test  {
 		Scanner input = new Scanner(System.in);
 		int choice = -1;
 		int accNumber = 0;
-	
+	    boolean continueInput = false;
 		while(choice != 0 ) {
-		System.out.print("Please choose an option: \n" + "\n 1. Create account\n"
+			
+			
+			do {
+				try {
+             System.out.print("Please choose an option: \n" + "\n 1. Create account\n"
 				+ "\n 2. Transfer money to another account\n" + "\n 3. Print account details \n " + "\n 4. Exit \n");
 
-		 choice = input.nextInt();
+					choice = input.nextInt();
+					input.nextLine();
+				   continueInput = false;			
+					
+				} 
+				catch (InputMismatchException ex) {
+					System.out.println("Incorrect input: an integer is required! ");
+					input.nextLine();
+					continueInput = true;
+				}
+			} while (continueInput);
+		
+		 
 		switch (choice) {
 
 		case 1:
@@ -33,7 +49,7 @@ public class Atm_test  {
 			account.setClient(name);
 			
 			System.out.println("Please insert number of account :");
-			boolean continueInput;
+			
 			do {
 				try {
 
